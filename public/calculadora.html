@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js"
+        integrity="sha512-dnUg2JxjlVoXHVdSMWDYm2Y5xcIrJg1N+juOuRi0yLVkku/g26rwHwysJDAMwahaDfRpr1AxFz43ktuMPr/l1A=="
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/calculadora.css">
+    <title>OFICIAL</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="seta">
+            <a href="index.html"><img href src="./imagens/cadastro/setaesquerdacinza.svg" alt=""></a>
+        </div>
+        <div>
+            <h1 class="titulo">SIMULADOR FINANCEIRO</h1>
+        </div>
+
+        <div class="itens">
+
+            <div class="campos">
+                <div class="campo">
+                    <div>
+                        <h1 class="logo">Colorful Life</h1>
+                    </div>
+                    <div>
+                        <p>Veja quanto tempo voce poderá economizar com o nosso sistema.</p>
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="label-formato"><label for="nome">Informe o seu nome</label></div>
+                    <div><input type="text" id="nome" placeholder="Digite o seu nome"></div>
+                </div>
+                <div class="campo">
+                    <div class="label-formato">
+                        <label for="">Informe a quantidade de crises mensais</label>
+                    </div>
+                    <div>
+                        <input type="text" id="crisesMensais" placeholder="Digite o número de crises mensais">
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="label-formato">
+                        <label for="">Informe o tempo de crise</label>
+                    </div>
+                    <div>
+                        <input type="text" id="tempoCrise" placeholder="Digite o tempo de crises em minutos">
+                    </div>
+                </div>
+                <div class="campo">
+                    <div class="label-formato">
+                        <label for="">Informe o tempo que voce dispõe para garantir que a crise terminou</label>
+                    </div>
+                    <div class="label-formato">
+                        <input type="text" id="tempoDisposto"
+                            placeholder="Digite o tempo disposto para cessar a crise em minutos">
+                    </div>
+                </div>
+                <button onclick="calcular()">Calcular</button>
+            </div>
+            <div id="text-grafic">
+                <div class="resultados">
+                    <div id="textosresult">
+                        <div id="boasVindas"></div>
+                        <div id="resultadoCrises"></div>
+                        <div id="resultado"></div>
+                        <div id="informacao"></div>
+                        <div id="economia"></div>
+                    </div>
+                </div>
+                <div id="grafico" style="display:none;">
+                    <div id="canva-graf">
+                        <canvas id="chart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+<script>
+    // var crises = document.getElementById('nome');
+
+
+    function calcular() {
+        //    pegando os valores informados pelo usuario
+        var crisesPorMes = Number(crisesMensais.value); //numero de crises mensais
+        var tempoDasCrises = Number(tempoCrise.value); //duração das crises
+        var tempoAposCrise = Number(tempoDisposto.value) //tempo disposto para garantir que a crise acabou
+        var nomeUsuario = nome.value;  //nome do usuario
+
+        // fazendo os calculos que serão apresentados para o usuário mediante ao que ele informou
+        var tempoTotalMinutos = tempoDasCrises + tempoAposCrise; //somando o tempo de crise e o tempo para garantir que ela acabou.
+        var tempoTotal = (tempoDasCrises + tempoAposCrise) % 60; // tempo total da crise e do tempo disposto para garantir que a crise passou (usado no if)
+        var tempoTotalMensal = (tempoTotal * crisesPorMes); // tempo total disposto por mes
+
+
+        var tempoTotalHoras = (tempoDasCrises + tempoAposCrise) / 60 // convertendo o tempo total >= 60 em horas (usado no else)
+
+        var horasMensais = tempoTotalMensal / 60; //convertendo os minutos (usados para conter a crise e os minutos de crise, vezes a quantidade de crises por mes) para horas. (usado no if)
+        var tempoTotalMensalHoras = tempoTotalHoras * crisesPorMes; // fazendo o calculo de quantas horas mensais o responsavel usa para lidar com crises (usado no else)
+
+
+        var cromoterapia = tempoTotalMinutos - 40; // uma sessão de cromoterapia dura 40 minutos, logo o nosso sistema contem uma crise em 40 minutos. Economizando 40 minutos do tempo total da crise e do tempo usado para conte-la;  
+        var cromoterapiaMensal = cromoterapia * crisesPorMes;
+            
+
+        // caso a crise dure menos de uma hora
+        if (tempoTotalMinutos <= 59) {
+            boasVindas.innerHTML = `Olá ${nomeUsuario}, seja bem vindo(a) a Colorful Life!<br><br>`;
+            resultadoCrises.innerHTML = `Atualmente você enfrenta ${crisesPorMes} crises por mês, que duram cerca de ${tempoDasCrises} minutos cada.<br><br>` ;
+            resultado.innerHTML = `Com isso, você disponibiliza cerca de ${tempoTotal} minutos a cada crise, contabilizando em média ` + Math.round(horasMensais) + ` horas por mês.<br><br>`;
+            informacao.innerHTML = `Sabendo disso, e visando melhorar a sua qualidade de vida e/ou a do seu anjo azul, nós da Colorful Life em conjunto com a cromoterapia desenvolvemos
+            uma aplicação, que atráves de um sensor de temperatura ira ajustar a iluminção do ambiente de sua preferencia, fazendo com que se torne ideal para tranquilizar em momentos crises.<br><br>`;
+            economia.innerHTML = `Com o nosso sistema, a crise poderá ser totalmente contida em 40 minutos de forma segura e pensada no bem estar do autista e do seu responsável, fazendo com que voce economize ${cromoterapia} minutos por crise.`;
+            grafico.style.display = "block";
+            }
+
+        // caso seja crise a partir de uma hora
+        else {
+            boasVindas.innerHTML = `Olá ${nomeUsuario}, seja bem vindo(a) a Colorful Life!<br><br>`;
+            resultadoCrises.innerHTML = `Atualmente você enfrenta ${crisesPorMes} crises por mês, que duram cerca de ${tempoDasCrises} minutos cada.<br><br>`;
+            resultado.innerHTML = `Com isso, você disponibiliza cerca de ` + Math.round(tempoTotalHoras) + ` horas a cada crise, contabilizando em média ` + Math.round(tempoTotalMensalHoras) + ` horas por mês.<br><br>`;
+            informacao.innerHTML = `Sabendo disso, e visando melhorar a sua qualidade de vida e/ou a do seu anjo azul, nós da Colorful Life em conjunto com a cromoterapia desenvolvemos
+            uma aplicação, que atráves de um sensor de temperatura ira ajustar a iluminção do ambiente de sua preferencia, fazendo com que se torne ideal para tranquilizar em momentos crises.<br><br>`;
+            economia.innerHTML = `Com o nosso sistema, a crise poderá ser totalmente contida em 40 minutos de forma segura e pensada no bem estar do autista e do seu responsável, fazendo com que voce economize ${cromoterapia} minutos por crise.`;
+            grafico.style.display = "block";
+        }
+
+
+        var ctx = chart.getContext("2d");
+
+        var config = {
+            type: "bar", // Aqui falo qual modelo de grafico vou querer
+            data: {
+                labels: ["CRISES MENSAIS", "DURAÇÃO DA CRISE", "DISPONIBILIDADE NECESSARIA"], // Aqui são as legendas do grafico
+                datasets: [
+                    {
+                        label: "Atualmente ", // Titulo do grafico
+                        data: [10, 20.0, 30.0], // Dados do grafico
+                        backgroundColor: [
+                            " #fc000049",
+                        ],
+                        borderColor: [
+                            "red",
+                        ],
+                        borderWidth: 3,
+                    },
+                    {
+                        label: "Com ColorFul Life", // Titulo do grafico
+                        data: [5.0, 15.0, 20.0], // Dados do grafico
+                        backgroundColor: [
+                            "#36ff0449"
+                        ],
+                        borderColor: [
+                            "green",
+                        ],
+                        borderWidth: 3,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: false,
+                        position: 'right',
+
+                        // grid line settings
+                        grid: {
+                            drawOnChartArea: false, // only want the grid lines for one axis to show up
+                        },
+                    },
+                }
+            },
+        };
+
+        new Chart(ctx, config); // Aqui chamo a funcao Chart que foi inserida no meu projeto na linha 7
+
+
+    }
+
+
+
+</script>
+<script>
+
+</script>

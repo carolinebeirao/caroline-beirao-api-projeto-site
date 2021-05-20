@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*Esquerda da tela*/
+#container_geral {
+    display: flex;
+}
+
+.container_esquerda {
+    background-image: url("../imagens/login/login.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 40%;
+    max-width: 40%;
+    min-height: 800px;
+    margin: 0 0 0 0;
+    height: 100%;
+    width: 40%;
+    text-align: center;
+}
+
+/*Escurecer imagem*/
+
+.pelicula{
+  background: #000;
+  width: 40%;
+  height: 800px;
+  opacity: 0.4;
+  position: absolute;
+  z-index: 0;
+}
+
+/*Colorful Life*/
+
+.container_esquerda h1{
+    position: absolute;
+    text-align: center;
+    font-family: verdana;
+    font-size: 50px;
+    color: whitesmoke;
+    margin: 0 auto;
+    width: 40%;
+    margin-top: 20%; 
+}
+
+.container_direita{
+    width: 60%;
+    text-align: center;
+    font-family: Verdana;
+}
+
+.opcoes_login{
+    margin: 4% auto 0 auto;
+    width: 90%;
+}
+
+#icone_redessociais {
+    display: flex;
+    margin: 0 auto;
+    width: 51%; 
+    margin-bottom: 40px; 
+}
+
+.opcoes_login h1{
+    font-family: verdana;
+    font-size: 15px;
+    color: #0A1A2B;
+    margin-bottom: 40px;
+}
+
+.bt_google{
+    margin-left: 45px;
+    width: 60px;
+    height: 60px;
+    background-image:  url("../imagens/login/google.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    border: 1px;
+    cursor: pointer;
+}
+
+.bt_facebook{
+    margin-left: 45px;
+    width: 60px;
+    height: 60px;
+    background-image:  url("../imagens/login/facebook.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    border: 1px;
+    cursor: pointer;
+}
+
+.bt_github{
+    margin-left: 45px;
+    width: 60px;
+    height: 60px;
+    background-image:  url("../imagens/login/github.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+
+}
+
+.opcoes_login fieldset {
+    margin-top: 10px;
+    border-top: 2px solid   #0A1A2B;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    text-align: center;
+}
+     
+.opcoes_login fieldset legend {
+    color: #6B6B6B;
+    padding: 5px 7px;
+}
+
+/*Fomulário*/ 
+
+.formulario{
+    text-align: center;
+}
+
+.formulario h2{
+    font-size: 16px;
+    color: #6b6b6bce;
+    font-weight:initial ;
+    
+}
+
+.input_padrao{
+    
+    width: 515px;
+    height: 30px;
+    margin: 0 auto 0 auto;
+    border: 2px solid #6b6b6b4f;
+    border-radius: 4px;
+    font-size: 14px;
+    padding-left: px;
+    display: flex;
+    align-items: center;
+    color: #0A1A2B;
+}
+
+#bt-e-esquecisenha {
+    margin: 0 auto;
+    width: 50%;
+    padding-bottom: 30px;
+
+}
+
+.h2_esqueciasenha{
+    margin-left: 0;
+    height: 22.34px;
+    font-size: 18px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #0A1A2B;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.btn_entrar{
+    margin: 0 auto;
+    width: 40%;
+    height: 30px;
+    background:  #0A1A2B;
+    border-radius: 5px;
+    border: 0;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+
+#linhafinal {
+    margin: 0 auto;
+    width: 90%;
+    height: 10px;
+    border-bottom: 2px solid #0A1A2B ;
+}
+
+.seta {
+    position: fixed;
+    margin: 20px;
+}
+
+.seta img{
+    width: 40px;
+}

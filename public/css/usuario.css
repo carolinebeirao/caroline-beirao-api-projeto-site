@@ -1,0 +1,368 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to bottom right, white 50%, #fdc81880  50%);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*-- CABEÇALHO --*/
+
+.cabecalho{
+    /* background-color: red; */
+    margin-bottom: 80px;
+    margin-left: 30px;
+}
+
+.logo{
+    margin: o auto;
+    /* width: 100%; */
+    color: rgb(131, 95, 165);
+    margin-top: 20px;
+    /* background-color: blue; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    /* margin-left: 500px; */
+}
+
+.logo img{
+    width: 300px;
+}
+
+.imagens img{
+    width: 50px;
+}
+
+.imagens{
+    background-color: orange;
+    width: 50px;
+    margin-left: 92%;
+    margin-top: -3%;
+}
+
+/*-- CONTEUDO DO SITE --*/
+
+.conteudo {
+    display: flex;
+}
+
+/* PERFI, DO USUARIO */
+
+.barra {
+    /* background-color: black; */
+    margin-top: 30px;
+    width: 300px;
+    margin-left: 20px;
+    /* border-top-width: 2px;
+    border-top-style: groove;
+    border-top-color: black; */
+    border-right-width: 4px;
+    border-right-style: solid;
+    border-right-color: #fdc81880;
+    
+}
+
+.perfil{
+    /* background-color: blue; */
+    width: 230px;
+    height: auto;
+    margin-left: 30px;
+    
+    
+}
+
+.foto{
+    padding: 8px;
+    margin: 0 auto;
+    background-color: white;
+    width: 80%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* border-style: groove; */
+    /* border-width: 1px; */
+    /* border-color: black; */
+    border-radius: 10px;
+    /* margin-left: 10px; */
+}
+
+.foto img{
+    width: 147px;
+}
+
+.info{
+    margin: 0 auto;
+    width: 90%;
+    color: #3D85C6 ;
+    padding: 10px;
+    /* background-color: rgba(255, 255, 255, 0.938); */
+    /* box-shadow: 2px -4px 5px rgb(255, 255, 255); */
+    border-radius: 5px;
+    /* padding-top: 1px; */
+    margin-top: 20px;
+    /* height: 280px; */
+}
+
+.info h4 {
+    margin: 0 auto;
+    padding-top: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+
+}
+
+.info p{
+   margin-top: px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    color: #292829;
+}
+
+/* GRAFICOS */
+
+.graficos {
+    /* background-color: red; */
+    width: 900px;
+    margin-top: 10px;
+    margin-left: 40px;
+    height: auto;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.titulo_conteudo h1{
+    font-family: verdana;
+    font-size: 25px;
+    text-align: center;
+    margin: 0 auto;
+    width:80%;
+    color: #3D85C6;
+    /* margin-left:140px ; */
+    /* text-shadow: 0.1em 0.1em 0.05em rgb(212, 201, 201); */
+    
+
+}
+
+.titulo_conteudo{
+    text-align: center;
+    /* background-color: white; */
+    /* width: 680px; */
+    margin-left: px;
+}
+
+
+
+.codigo_grafico{
+    background-color: rgb(233, 223, 223);
+    margin-top: 40px;
+    height: auto;
+    
+}
+
+#caixa-temp {
+    background-color: none;
+    border: 3px solid #3D85C6 ;
+    background-color: white;
+}
+
+#caixa-temp h1{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(51, 51, 51, 0.527);
+    padding-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* background-color: rgb(72, 18, 158); */
+}
+
+#caixa-temp #medias-temp {
+    display: flex;
+    margin: 0 auto;
+    width: 80% ;
+    margin-left: 100px;
+
+}
+
+#caixa-temp h2{
+    margin: 0 auto;
+    color: rgba(51, 51, 51, 0.527);
+    text-align: center;
+    font-size: 15px;
+    padding-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* background-color: rgb(158, 27, 18); */
+}
+
+
+/* CSS DO RODAPÉ */
+
+
+.rodape{
+    background-color: #292829   ;
+    height:410px ;
+    margin-top: 40px;
+    margin-left: -10px;
+    margin-bottom: -20px;
+    margin-right: px;
+}
+.container_rodape{
+    display: flex;
+}
+
+
+.container_rodape p{
+    font-family: verdana;
+    font-size: 13px;
+    
+}
+
+.parte01{
+    /* background-color: yellow; */
+    margin-left: 40px;
+    width: 200px;
+    text-align: center;
+}
+
+.parte02{
+    /* background-color: green; */
+    margin-left: 80px;
+    width: 200px;
+    text-align: center;
+}
+
+.parte03{
+    /* background-color: red; */
+    margin-left: 100px;
+    width: 200px;
+    text-align: center;
+}
+
+.parte04{
+    /* background-color: blue; */
+    margin-left: 100px;
+    width: 200px;
+    text-align: center;
+}
+
+.parte05{
+    /* background-color: cyan; */
+    margin-left: 80px;
+    width: 200px;
+    text-align: center;
+}
+
+.parte01 h4{
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 23px;
+    color: #bf38b2bd;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.parte02 h4{
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 23px;
+    color: rgba(191, 56, 178, 0.74);
+    font-family: Red Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.parte03 h4{
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 23px;
+    color: #bf38b2bd;
+    font-family: Red Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.parte04 h4{
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 23px;
+    color: rgba(191, 56, 178, 0.74);
+    font-family: Red Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.parte05 h4{
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 23px;
+    color: rgba(191, 56, 178, 0.74);
+    font-family: Red Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.parte01 p{
+    color: white;
+    
+}
+
+.parte02 p{
+    color: white;
+}
+
+.parte03 p{
+    color: white;
+}
+
+.parte04 p{
+    color: white;
+}
+
+.parte05 p{
+    color: white;
+}
+
+.frase_final{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.frase_final h1{
+    color: rgba(253, 200, 24, 0.67);
+    font-family: Hat Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 66px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+
+}
+
+.imagens_rodape{
+    text-align: center;
+    
+}
+
+.imagens_rodape img{
+    height: 45px;
+    margin:7px;
+}

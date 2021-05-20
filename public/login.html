@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Login</title>
+</head>
+
+<body>
+
+
+    <div id="container_geral">
+        <div class="container_esquerda">
+            <div></div>
+            <div class="seta">
+                <a href="index.html"><img href src="./imagens/cadastro/setaesquerdacinza.svg" alt=""></a>
+            </div>
+        </div>
+
+        <div class="container_direita">
+
+
+            <div class="opcoes_login">
+
+                <h1>Bem vindo(a) de volta! Entre com:</h1>
+                <div id="icone_redessociais">
+                    <button onclick="google()" class="bt_google"></button>
+                    <button onclick="facebook()" class="bt_facebook"></button>
+                    <button onclick="github()" class="bt_github"></button>
+                </div>
+
+                <fieldset>
+                    <legend>Ou</legend>
+                </fieldset>
+            </div>
+
+            <div >
+                <form id="form_login" method="post" onsubmit="return entrar()" class="formulario">
+                    <h2>Email</h2>
+                    <input id="ipt_email" name="email" class="input_padrao" type="text" placeholder="Digite seu e-mail" autofocus>
+
+                    <h2>Senha</h2>
+                    <input id="ipt_senha" name="senha" class="input_padrao" type="password" placeholder="Senha">
+
+                    <div id="bt-e-esquecisenha">
+                        <h2 class="h2_esqueciasenha" onclick="esqueci()">Esqueci senha</h2>
+
+                        <button id="btn_entrar" type="submit" class="btn_entrar" >Entrar</button>
+
+                    </div>
+
+                </form>
+                <div class="extra">
+                    <div id="div_erro" class="msg_erro" style="background-color: sandybrown; color: maroon; display: none;">
+                    </div>
+
+                    <img src="aguarde-orange.gif" id="img_aguarde"  style="display: none; width:100px"> <!---->
+                    
+                </div>
+                <div id="linhafinal">
+                    
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+     function entrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.email_paciente_meuapp = json.email;
+                    sessionStorage.senha_paciente_meuapp = json.senha;
+
+                    window.location.href = 'usuario.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.display = 'block';
+        div_erro.style.display = 'none';
+        
+    }
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.display = 'none';
+        div_erro.style.display = 'block';
+        div_erro.innerHTML = resposta;
+    }
+
+</script>

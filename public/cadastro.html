@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./css/cadastro.css">
+</head>
+
+<body>
+
+
+
+
+    <div id="container_geral">
+
+        <!-- Lado esquerdo da tela:
+    - Imagem de fundo;
+    - Nome da empresa;
+    - Pelicula para escurecer a imagem -->
+        <div class="container_esquerda">
+            <div class="pelicula"></div>
+            <div class="seta">
+                <a href="index.html"><img href src="./imagens/cadastro/setaesquerdacinza.svg" alt=""></a>
+            </div>
+
+        </div>
+
+
+        <div id="cadastro_parte1" style="display: block;" class="container_direita">
+            <!-- Lado direito da tela - Parte 1 Cadastro:
+    - Imagem para indicar o andamento do cadastro;
+    - Saudações;
+    - Formas de cadastro (Google, facebook, github);
+    - Formulário de cadastro parte 1;
+    - Botão avançar; -->
+            <div class="progresso_cadastro"></div>
+
+            <div class="opcoes_cadastro">
+
+                <h2>Bem Vindo(a)! Comece com:</h2>
+                <div id="icone_redessociais">
+                    <button onclick="google()" class="bt_google"></button>
+                    <button onclick="facebook()" class="bt_facebook"></button>
+                    <button onclick="github()" class="bt_github"></button>
+                </div>
+
+                <fieldset>
+                    <legend>Ou</legend>
+                </fieldset>
+            </div>
+
+            <div class="formulario1">
+                <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                    <p class="campo">Nome Completo</p>
+                    <input type="text" name="nome" class="input_cadastro_parte1" placeholder="Nome e sobrenome" required
+                        minlength="4">
+
+                    <p class="campo">E-mail</p>
+                    <input id="ipt_email" type="text" name="email" class="input_cadastro_parte1"
+                        placeholder="Seu e-mail" required minlength="4">
+                    <div id="div_email"></div>
+
+                    <p class="campo">Senha</p>
+                    <input name="senha" id="ipt_senha" type="password" class="input_cadastro_parte1"
+                        placeholder="Sua senha" required minlength="4">
+                    <div id="div_senha"></div>
+
+
+                    <p class="campo">CPF:</p>
+                    <input name="cpf" type="number" class="input_cadastro_paciente" placeholder="Digite o cpf" required
+                        minlength="11" required
+                        maxlength="11">
+
+
+                    <!-- <p class="campo">Data de Nascimento:</p>
+                    <input name="dataNasc" type="date" class="input_cadastro_paciente" placeholder="Sua senha"> -->
+
+                    <div id="selects_paciente">
+                        <div id="caixa-sex-grau2">
+                            <p class="campo">Grau do autismo:</p>
+                            <select name="grauAutismo" class="select_cadastro_paciente" id="grau_autismo" required
+                                minlength="1">
+                                <option hidden>-- Selecione o nível do autismo --</option>
+                                <option value="1">Leve (nível 1)</option>
+                                <option value="2">Moderado (nível 2)</option>
+                                <option value="3">Severo (nível 3)</option>
+                            </select>
+                        </div>
+                        <p class="campo">Sexo:</p>
+                        <input name="sexo" type="text" class="input_cadastro_paciente" placeholder="Digite M, F ou O"
+                            required maxlength="1">
+
+                    </div>
+
+
+                    <!-- <fieldset>
+                        <legend>Tipo de conta</legend>
+                    </fieldset>
+                    <div class="checkbox">
+                        <input id="radio_paciente" name="tipo_conta" value="paciente" type="radio"><b>Paciente</b>
+                        <input id="radio_profissional" name="tipo_conta" value="profissional"
+                            type="radio"><b>Profissional</b>
+                    </div> -->
+                    <button type="submit" id="btn_entrar" class="btn_padrao"><b>Próximo</b></button>
+                </form>
+
+                <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+
+                <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+                    Erro no cadastro
+                </div>
+            </div>
+            <!-- <div class="imagem-lateral">
+                <img src="img/side-img-contato_orange.jpg">
+            </div> -->
+        </div>
+
+        <!-- Lado direito da tela - Parte 2 Cadastro Paciente:
+    - Imagem para indicar o andamento do cadastro;
+    - Formulário de cadastro parte 2;
+    - Botão "voltar";
+    - Botão "avançar". -->
+
+
+        <div id="cadastro_paciente" style="display: none;" class="container_direita">
+            <div class="progresso_paciente"></div>
+            <div class="box_cadastro">
+                <div class="formulario_paciente">
+
+                    <form>
+                        <!-- <p class="campo">CPF:</p>
+                        <input type="number" class="input_cadastro_paciente" placeholder="Digite o cpf">
+
+
+                        <p class="campo">Data de Nascimento:</p>
+                        <input type="date" class="input_cadastro_paciente" placeholder="Sua senha">
+
+                        <div id="selects_paciente">
+                            <div id="caixa-sex-grau2">
+                                <p class="campo">Grau do autismo:</p>
+                                <select class="select_cadastro_paciente" id="grau_autismo">
+                                    <option value="">-- Selecione o nível do autismo --</option>
+                                    <option value="1">Leve (nível 1)</option>
+                                    <option value="2">Moderado (nível 2)</option>
+                                    <option value="3">Severo (nível 3)</option>
+                                </select>
+                            </div>
+                            <div id="caixa-sex-grau1">
+                                <p class="campo">Sexo:</p>
+                                <select class="select_cadastro_paciente" id="sexo">
+                                    <option value="">-- Selecione o Sexo --</option>
+                                    <option value="1">Masculino</option>
+                                    <option value="2">Feminino</option>
+                                    <option value="3">Outro</option>
+                                    <option value="4">Prefiro não informar</option>
+                                </select>
+                            </div>
+                            
+                        </div> -->
+
+                        <button onclick="btn_voltar()" type="button" class="btn_padrao"><b>Voltar</b></button>
+                        <button onclick="btn_avancar2()" type="button" class="btn_padrao"><b>Próximo</b></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Lado direito da tela - Parte 2 Cadastro Profissional:
+    - Imagem para indicar o andamento do cadastro;
+    - Formulário de cadastro parte 2;
+    - Botão "voltar";
+    - Botão "avançar". -->
+
+        <div id="cadastro_profissional" style="display: none;" class="container_direita">
+            <div class="progresso_profissional"></div>
+
+            <div class="box_cadastro">
+                <div class="formulario_profissional">
+
+                    <form>
+                        <p class="campo">CPF:</p>
+                        <input type="number" class="input_cadastro_profissional" placeholder="CPF">
+
+                        <p class="campo">CRM:</p>
+                        <input type="number" class="input_cadastro_profissional" placeholder="CPF">
+
+                        <p class="campo">Profissão:</p>
+                        <input type="number" class="input_cadastro_profissional" placeholder="CPF">
+
+                        <!-- <p class="campo">Data de Nascimento:</p>
+                        <input type="date" class="input_cadastro_profissional"> -->
+
+                        <p class="campo">Sexo:</p>
+                        <select class="select_padrao_profissional" id="sexo">
+                            <option value="">-- Selecione o Sexo --</option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
+                            <option value="3">Outro</option>
+                            <option value="4">Prefiro não informar</option>
+                        </select>
+
+                        <div>
+                            <button type="button" onclick="btn_voltar2()" class="btn_padrao"><b>Voltar</b></button>
+                            <button type="button" onclick="btn_avancar3()" class="btn_padrao"><b>Próximo</b></button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lado direito da tela - Parte 3 Endereço:
+    - Imagem para indicar o andamento do cadastro;
+    - Formulário de cadastro parte 3 - Endereço;
+    - Botão "voltar";
+    - Botão "finalizar". -->
+
+        <div id="cadastro_endereco" style="display: none;" class="container_direita">
+            <div class="progresso_cadastro3"></div>
+
+            <div class="box_cadastro">
+                <div class="formulario3">
+                    <h1>Endereço</h1>
+                    <form>
+                        <p class="campo">Estado:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="Estado">
+
+                        <p class="campo">Cidade:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="Cidade">
+
+                        <p class="campo">CEP:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="CEP">
+
+                        <p class="campo">Bairro:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="Bairro">
+
+                        <p class="campo">Rua:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="Rua">
+
+                        <p class="campo">Número:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="Número">
+
+                        <p class="campo">Complemento:</p>
+                        <input type="text" class="input_cadastro_parte3" placeholder="Complemento">
+
+
+
+                        <button type="button" onclick="btn_voltar3()" class="btn_padrao"><b>Voltar</b></button>
+                        <a href="login.html"> <button onclick="btn_avancar4()" type="button"
+                                class="btn_padrao"><b>Finalizar</b></button></a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+<Script>
+
+
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+
+                window.location.href = 'login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.display = 'block';
+        div_erro.style.display = 'none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        img_aguarde.style.display = 'none';
+        div_erro.style.display = 'block';
+    }
+
+
+    // Botão cadastro parte 1:
+
+    // function btn_avancar() {
+
+        // if (radio_paciente.checked) {
+
+        //     cadastro_parte1.style.display = "none";
+        //     cadastro_paciente.style.display = "block";
+
+        // } else if (radio_profissional.checked) {
+
+        //     cadastro_parte1.style.display = "none";
+        //     cadastro_profissional.style.display = "block";
+
+        // } else {
+        //     alert("Selecione o tipo de conta");
+        // }
+
+    // }
+
+    // Botões cadastro paciente:
+
+//     function btn_avancar2() {
+
+//         cadastro_paciente.style.display = "none";
+//         cadastro_endereco.style.display = "block";
+
+//     }
+
+//     function btn_voltar() {
+
+//         cadastro_parte1.style.display = "block";
+//         cadastro_paciente.style.display = "none";
+
+//     }
+
+//     // Botões cadastro profissional:
+
+//     function btn_avancar3() {
+
+//         cadastro_profissional.style.display = "none";
+//         cadastro_endereco.style.display = "block";  
+//     }
+
+//     function btn_voltar2() {
+
+//         cadastro_parte1.style.display = "block";
+//         cadastro_profissional.style.display = "none";
+
+//     }
+
+//     // Botões cadastro endereço:
+
+
+
+//     function btn_voltar3() {
+
+//         cadastro_parte1.style.display = "block";
+//         cadastro_endereco.style.display = "none";
+
+//     }
+
+//     function email(){
+//     if (ipt_email.value.indexOf('@') >= 0 && ipt_email.value.indexOf('.com') >=0) {
+//         div_email.innerHTML = `<span style="color: green; font-family: Verdana;">E-mail válido.</span>`;
+//     }else {
+//         div_email.innerHTML = `<span style="color: red;">E-mail inválido.</span>`;
+//     }
+// }
+// function senha(){
+//     var senha =  ipt_senha.value;
+//         senha = senha.trimStart();
+//         senha = senha.trimEnd();
+
+//     if (senha.length >= 8) {
+//         div_senha.innerHTML = `<span style="color: green;">Senha válida.</span>`;
+//     }else {
+//         div_senha.innerHTML = `<span style="color: red;font-family: Verdana;">Senha inválida. Digite pelo menos 7 caracteres!</span>`;
+
+//     }
+// }
+
+</Script>
